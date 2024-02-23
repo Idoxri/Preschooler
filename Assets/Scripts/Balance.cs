@@ -17,10 +17,15 @@ public class Balance : MonoBehaviour
 	private Item actualFruit;
 	private Item actualFruitToWeight = default;
 
+	public Balance Instance = default;
+
 	private void Start()
 	{
+		if (Instance == null)
+			Instance = this;
+
+		fruitToDisplay = CustomerHandler.Instance.CurrentCustomer.ItemList;
 		btnValidation.onClick.AddListener(ValidWeighting);
-		Debug.Log("dede");
 		DisplayFruit();
 	}
 

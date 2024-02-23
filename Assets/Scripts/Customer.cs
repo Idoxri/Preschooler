@@ -6,7 +6,7 @@ public class Customer : MonoBehaviour
 {
     private CustomerSetting customerSetting;
 
-    public List<GameObject> ItemList { get; private set; } = new List<GameObject>();
+    public List<Item> ItemList { get; private set; } = new List<Item>();
 
     public void SetInformations(CustomerSetting setting)
     {
