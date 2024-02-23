@@ -29,21 +29,27 @@ public class Balance : MonoBehaviour
 		DisplayFruit();
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Item fruitDrop = collision.GetComponent<Item>();
-		if (fruitDrop == null)
-			return;
+        if (collision.CompareTag("Fruit"))
+        {
+			Item fruitDrop = collision.gameObject.GetComponent<Item>();
 
-		if (CheckRightFruit(fruitDrop))
-		{
-			actualFruit = collision.GetComponent<Item>();
+			Debug.Log(CheckRightFruit(fruitDrop));
+
+			if (CheckRightFruit(fruitDrop))
+			{
+				actualFruit = collision.gameObject.GetComponent<Item>();
+			}
 		}
+
+
+
 	}
 
 	private bool CheckRightFruit(Item fruitToCheck)
 	{
-		if (fruitToCheck.name == actualFruitToWeight.name)
+		if (fruitToCheck.DisplayName == actualFruitToWeight.DisplayName)
 			return true;
 		else
 			return false;
@@ -51,25 +57,28 @@ public class Balance : MonoBehaviour
 
 	public void ValidWeighting()
 	{
-		if(actualFruit)
-			Debug.Log(actualFruit.name);
+		if (actualFruit)
+		{
 
-		if (CheckRightFruit(actualFruit))
-		{
-			fruitToDisplay.Remove(actualFruit);
-			imageFruit.sprite = spriteValidationImage;
-			Debug.Log("BonFruit");
-			Instantiate(ticketToSpawn, pointToSpawnTicket);
-		}
-		else
-		{
-			Debug.Log("MauvaisFruit");
+			if (CheckRightFruit(actualFruit))
+			{
+				fruitToDisplay.Remove(actualFruit);
+				imageFruit.sprite = spriteValidationImage;
+				Debug.Log("BonFruit");
+				Instantiate(ticketToSpawn, pointToSpawnTicket.transform.position, Quaternion.identity);
+				actualFruit = null;
+				DisplayFruit();
+			}
+			else
+			{
+				Debug.Log("MauvaisFruit");
+			}
 		}
 	}
 
 	private void DisplayFruit()
 	{
-		int randomIndex = Random.RandomRange(0, fruitToDisplay.Count);
+		int randomIndex = Random.Range(0, fruitToDisplay.Count);
 
 		Item randomFruit =  fruitToDisplay[randomIndex];
 		actualFruitToWeight = randomFruit;

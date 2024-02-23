@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.9762013, y: -0.81770545, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef508b0bb82325459b9e42ce9c9d84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  forward: 1
+  speed: 300
+  forward: 10
   selectedScale: 1.1
   selectedScaleDuration: 0.1
   selectedScaleCurve:
@@ -155,8 +155,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  beginDragParticles: {fileID: 0}
-  endDragParticles: {fileID: 0}
+  beginDragParticles: {fileID: 6807718014444227622, guid: 667cb48902b7a384e966bb347cc8bd32, type: 3}
+  endDragParticles: {fileID: 1726189953133249057, guid: 0f8b98c6490d1824d9f45da947bcade7, type: 3}
 --- !u!114 &965423090110483352
 MonoBehaviour:
   m_ObjectHideFlags: 0
