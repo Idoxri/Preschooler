@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         lastPosition = Camera.main.ScreenToWorldPoint(point);
-        currentDraggable.transform.position = lastPosition;
-        currentDraggable.UpdateDrag();
+        currentDraggable.UpdateDrag(lastPosition);
     }
     private void TouchController_OnUp(Vector2 point)
     {
