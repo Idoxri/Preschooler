@@ -4,6 +4,7 @@ using UnityEngine;
 
 public delegate void CameraControllerEventHandler();
 
+[DefaultExecutionOrder(1000)]
 public class CameraController : MonoBehaviour
 {
     public static CameraController Instance { get; private set; }

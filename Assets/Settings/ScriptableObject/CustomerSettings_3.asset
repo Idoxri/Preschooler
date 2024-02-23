@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CustomerSettings_3
   m_EditorClassIdentifier: 
   <ItemList>k__BackingField:
-  - {fileID: 2305474698738410740, guid: 3b51cd181708338479b0d9503219807d, type: 3}
-  - {fileID: 2993950344824930556, guid: 7067c60c48c6c784dab2ae18e4556ef9, type: 3}
-  - {fileID: 8993038491659101937, guid: 451a365bf2ae67b4fa4f74920fede1aa, type: 3}
-  - {fileID: 106605056868502454, guid: 26176ecb1280c2e42a7338d5a96f8f75, type: 3}
+  - {fileID: 472951198039422028, guid: 3b51cd181708338479b0d9503219807d, type: 3}
+  - {fileID: -8438570153256897703, guid: 7067c60c48c6c784dab2ae18e4556ef9, type: 3}
+  - {fileID: 2343173204258065844, guid: 451a365bf2ae67b4fa4f74920fede1aa, type: 3}
   - {fileID: 5053382739259565456, guid: a8cee61fecfbcd44dab5e2c7b634dca7, type: 3}
+  - {fileID: -7935037787394410695, guid: 26176ecb1280c2e42a7338d5a96f8f75, type: 3}

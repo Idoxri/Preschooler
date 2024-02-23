@@ -12,13 +12,9 @@ public class Customer : MonoBehaviour
 
     public List<Item> ItemList { get; private set; } = new List<Item>();
 
-    private void Awake()
-    {
-        CameraController.Instance.onMoveDone += CameraController_onMoveDone;
-    }
-
     private void Start()
     {
+        CameraController.Instance.onMoveDone += CameraController_onMoveDone;
         initialPosRelativeToCamera = transform.position - Camera.main.transform.position ;
     }
 

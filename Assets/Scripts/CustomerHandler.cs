@@ -15,7 +15,7 @@ public class CustomerHandler : MonoBehaviour
     public Customer CurrentCustomer { get; set; }
     public static CustomerHandler Instance { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         NextCustomer();
