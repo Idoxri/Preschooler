@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private CustomerSetting customerSetting;
 
-    // Update is called once per frame
-    void Update()
+    public List<GameObject> ItemList { get; private set; } = new List<GameObject>();
+
+    public void SetInformations(CustomerSetting setting)
     {
-        
+        customerSetting = setting;
+
+        for (int i = 0; i < customerSetting.ItemList.Count; i++)
+        {
+            ItemList.Add(customerSetting.ItemList[i]);
+        }
     }
 }
