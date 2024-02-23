@@ -22,6 +22,7 @@ public class NoisyButton : InteractibleObject
 
         if (currentCoroutine != null) return;
         currentCoroutine = StartCoroutine(pressAnim());
+        Balance.Instance.ValidWeighting();
     }
 
     private IEnumerator pressAnim()

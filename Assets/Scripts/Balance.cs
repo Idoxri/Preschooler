@@ -17,7 +17,7 @@ public class Balance : MonoBehaviour
 	private Item actualFruit;
 	private Item actualFruitToWeight = default;
 
-	public Balance Instance = default;
+	static public Balance Instance = default;
 
 	private void Start()
 	{
