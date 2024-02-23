@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 603916d9fe0541a41b2bc61f876a62d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRadius: 0.3
+  interactionRadius: 1.5
   buttonBody: {fileID: 8630595517728438800}
   buttonBodyPressCurve:
     serializedVersion: 2
