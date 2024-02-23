@@ -21,7 +21,7 @@ public class Draggable : MonoBehaviour
         //rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints2D.FreezePosition;
 
-        OnBeginDrag.Invoke();
+        OnBeginDrag?.Invoke();
     }
     public void UpdateDrag()
     {
@@ -33,6 +33,6 @@ public class Draggable : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.velocity = velocity;
 
-        OnEndDrag.Invoke();
+        OnEndDrag?.Invoke();
     }
 }
