@@ -5,8 +5,7 @@ using UnityEngine;
 public class Tag : MonoBehaviour
 {
     [SerializeField] private Draggable draggableComponent = default;
-    [SerializeField] private float interactionRadius = .5f;
-    [SerializeField] private Collider coll = default;
+    [SerializeField] private BoxCollider2D coll = default;
 
     private void Start()
     {
@@ -22,19 +21,32 @@ public class Tag : MonoBehaviour
 
     private void DraggableComponent_OnEndDrag()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100))
+        coll.isTrigger = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Fruit"))
         {
-            if (hit.collider.CompareTag("Fruit"))
-            {
-                transform.SetParent(hit.transform);
-            }
+            transform.SetParent(collision.transform);
+            /*transform.GetComponent<Rigidbody2D>().gravityScale = 0f;
+            transform.GetComponent<Rigidbody2D>().mass = 0f;
+            transform.GetComponent<Rigidbody2D>().angularDrag = 0f;*/
+
+            draggableComponent.enabled = false;
+            coll.enabled = false;
+            draggableComponent.OnEndDrag -= DraggableComponent_OnEndDrag;
         }
+    }
+
+    private void Update()
+    {
+        if (transform.parent != null)
+            transform.position = transform.parent.position;
     }
 
     private void DraggableComponent_OnBeginDrag()
     {
-        //coll.
+        coll.isTrigger = true;
     }
 }

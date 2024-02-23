@@ -7,11 +7,14 @@ public class Balance : MonoBehaviour
 {
 	[SerializeField] private SpriteRenderer imageFruit = default;
 	[SerializeField] private Sprite spriteValidationImage = default;
+	[SerializeField] private Button btnValidation;
+	[SerializeField] private GameObject ticketToSpawn;
+	[SerializeField] private Transform pointToSpawnTicket;
 
 	[HideInInspector]
     public bool isDrop = true;
-    [HideInInspector]
-    public List<Item> fruitToDisplay = new List<Item>();
+	//[HideInInspector]
+	public List<Item> fruitToDisplay = new List<Item>();
 
 	private Item actualFruit;
 	private Item actualFruitToWeight = default;
@@ -24,6 +27,7 @@ public class Balance : MonoBehaviour
 			Instance = this;
 
 		fruitToDisplay = CustomerHandler.Instance.CurrentCustomer.ItemList;
+		btnValidation.onClick.AddListener(ValidWeighting);
 		DisplayFruit();
 	}
 
@@ -53,8 +57,8 @@ public class Balance : MonoBehaviour
 		{
 			fruitToDisplay.Remove(actualFruit);
 			imageFruit.sprite = spriteValidationImage;
-			DisplayFruit();
 			Debug.Log("BonFruit");
+			Instantiate(ticketToSpawn, pointToSpawnTicket);
 		}
 		else
 		{

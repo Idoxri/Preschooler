@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        TouchController.Instance.OnDown += Instance_OnDown;
     }
 
     private void Start()
@@ -29,7 +28,7 @@ public class CameraController : MonoBehaviour
         SlideToOtherPoint();
     }
 
-    private void Instance_OnDown(Vector2 point)
+    public void SlideCamera()
     {
         if (currentCoroutine != null) return;
         currentCoroutine = StartCoroutine(SlideToOtherPoint());
