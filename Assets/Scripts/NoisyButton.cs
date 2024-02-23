@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void NoisyButtonEventHandler();
+
 public class NoisyButton : InteractibleObject
 {
     [SerializeField] private Transform buttonBody = default;
@@ -10,6 +12,7 @@ public class NoisyButton : InteractibleObject
     [SerializeField] private Vector3 buttonBodyPressScale = default;
     private Coroutine currentCoroutine;
     private Vector3 minScale;
+    public event NoisyButtonEventHandler onButtonClicked;
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class NoisyButton : InteractibleObject
     protected override void PerformAction()
     {
         base.PerformAction();
+        onButtonClicked?.Invoke();
 
         if (currentCoroutine != null) return;
         currentCoroutine = StartCoroutine(pressAnim());
