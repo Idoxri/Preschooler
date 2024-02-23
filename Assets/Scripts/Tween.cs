@@ -42,14 +42,14 @@ public class Tween : MonoBehaviour
         yield break;
     }
 
-    public static IEnumerator ScaleYoyo(Transform target, Vector3 to, float duration)
+    public static IEnumerator ScaleYoyo(Transform target, Vector3 to, float duration, AnimationCurve curve = null)
     {
         float elapsedTime = 0f;
         Vector3 startSize = target.localScale;
 
         while (elapsedTime <= (duration / 2))
         {
-            target.localScale = Vector3.LerpUnclamped(startSize, to, elapsedTime / (duration / 2));
+            target.localScale = Vector3.LerpUnclamped(startSize, to, curve.Evaluate(elapsedTime / (duration / 2)));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -59,7 +59,7 @@ public class Tween : MonoBehaviour
 
         while (elapsedTime <= (duration / 2))
         {
-            target.localScale = Vector3.LerpUnclamped(to, startSize, elapsedTime / (duration / 2));
+            target.localScale = Vector3.LerpUnclamped(to, startSize, curve.Evaluate(elapsedTime / (duration / 2)));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
