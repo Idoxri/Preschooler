@@ -8,6 +8,8 @@ public class Balance : MonoBehaviour
 	[SerializeField] private SpriteRenderer imageFruit = default;
 	[SerializeField] private Sprite spriteValidationImage = default;
 	[SerializeField] private Button btnValidation;
+	[SerializeField] private GameObject ticketToSpawn;
+	[SerializeField] private Transform pointToSpawnTicket;
 
 	[HideInInspector]
     public bool isDrop = true;
@@ -56,6 +58,7 @@ public class Balance : MonoBehaviour
 			fruitToDisplay.Remove(actualFruit);
 			imageFruit.sprite = spriteValidationImage;
 			Debug.Log("BonFruit");
+			Instantiate(ticketToSpawn, pointToSpawnTicket);
 		}
 		else
 		{
