@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void CameraControllerEventHandler();
+
 public class CameraController : MonoBehaviour
 {
+    public static CameraController Instance { get; private set; }
+
     [SerializeField] private Vector3 pointA = default;
     [SerializeField] private Vector3 pointB = default;
     [SerializeField] private float slideDuration = default;
@@ -11,8 +15,11 @@ public class CameraController : MonoBehaviour
     private bool isAtPointA = true;
     private Coroutine currentCoroutine;
 
+    public event CameraControllerEventHandler onMoveDone;
+
     private void Awake()
     {
+        Instance = this;
         TouchController.Instance.OnDown += Instance_OnDown;
     }
 
@@ -42,6 +49,7 @@ public class CameraController : MonoBehaviour
 
         yield return new WaitForSeconds(slideDuration);
         currentCoroutine = null;
+        onMoveDone?.Invoke();
         yield return null;
         
     }
