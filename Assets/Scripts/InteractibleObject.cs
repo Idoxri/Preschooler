@@ -25,6 +25,7 @@ public class InteractibleObject : MonoBehaviour
 
     }
 
+
     protected virtual void PerformAction()
     {
     }
