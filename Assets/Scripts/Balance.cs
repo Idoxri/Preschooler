@@ -5,57 +5,65 @@ using UnityEngine.UI;
 
 public class Balance : MonoBehaviour
 {
-	[SerializeField] private Image imageFruit = default;
+	[SerializeField] private SpriteRenderer imageFruit = default;
 	[SerializeField] private Sprite spriteValidationImage = default;
 	[SerializeField] private Button btnValidation;
 
 	[HideInInspector]
     public bool isDrop = true;
-	[HideInInspector]
-	public List<GameObject> fruitToDisplay = new List<GameObject>();
+	//[HideInInspector]
+	public List<Item> fruitToDisplay = new List<Item>();
 
-	private GameObject actualFruit;
-	private GameObject actualFruitToWeight = default;
+	private Item actualFruit;
+	private Item actualFruitToWeight = default;
 
 	private void Start()
 	{
 		btnValidation.onClick.AddListener(ValidWeighting);
-		DisplayFruit(null);
+		Debug.Log("dede");
+		DisplayFruit();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		GameObject fruitDrop = collision.GetComponent<GameObject>();
+		Item fruitDrop = collision.GetComponent<Item>();
 
 		if (CheckRightFruit(fruitDrop))
 		{
-			actualFruit = collision.GetComponent<GameObject>();
+			actualFruit = collision.GetComponent<Item>();
 		}
 	}
 
-	private bool CheckRightFruit(GameObject fruitToCheck)
+	private bool CheckRightFruit(Item fruitToCheck)
 	{
-		if (fruitToCheck == actualFruitToWeight)
+		if (fruitToCheck.name == actualFruitToWeight.name)
 			return true;
 		else
 			return false;
 	}
 
-	private void ValidWeighting()
+	public void ValidWeighting()
 	{
+		Debug.Log(actualFruit.name);
+
 		if (CheckRightFruit(actualFruit))
 		{
 			fruitToDisplay.Remove(actualFruit);
 			imageFruit.sprite = spriteValidationImage;
+			Debug.Log("BonFruit");
+		}
+		else
+		{
+			Debug.Log("MauvaisFruit");
 		}
 	}
 
-	private void DisplayFruit(Sprite newImageFruit)
+	private void DisplayFruit()
 	{
-		int randomIndex = Random.RandomRange(0, fruitToDisplay.Count - 1);
+		int randomIndex = Random.RandomRange(0, fruitToDisplay.Count);
 
-		GameObject randomFruit =  fruitToDisplay[randomIndex];
+		Item randomFruit =  fruitToDisplay[randomIndex];
 		actualFruitToWeight = randomFruit;
-		imageFruit.sprite = newImageFruit;
+		imageFruit.sprite = randomFruit.Sprite;
 	}
 }
