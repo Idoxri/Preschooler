@@ -114,8 +114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef508b0bb82325459b9e42ce9c9d84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  forward: 1
+  speed: 300
+  forward: 10
   selectedScale: 1.1
   selectedScaleDuration: 0.1
   selectedScaleCurve:

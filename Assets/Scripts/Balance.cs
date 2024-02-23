@@ -7,7 +7,6 @@ public class Balance : MonoBehaviour
 {
 	[SerializeField] private SpriteRenderer imageFruit = default;
 	[SerializeField] private Sprite spriteValidationImage = default;
-	[SerializeField] private Button btnValidation;
 	[SerializeField] private GameObject ticketToSpawn;
 	[SerializeField] private Transform pointToSpawnTicket;
 
@@ -27,13 +26,14 @@ public class Balance : MonoBehaviour
 			Instance = this;
 
 		fruitToDisplay = CustomerHandler.Instance.CurrentCustomer.ItemList;
-		btnValidation.onClick.AddListener(ValidWeighting);
 		DisplayFruit();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		Item fruitDrop = collision.GetComponent<Item>();
+		if (fruitDrop == null)
+			return;
 
 		if (CheckRightFruit(fruitDrop))
 		{
@@ -51,7 +51,8 @@ public class Balance : MonoBehaviour
 
 	public void ValidWeighting()
 	{
-		Debug.Log(actualFruit.name);
+		if(actualFruit)
+			Debug.Log(actualFruit.name);
 
 		if (CheckRightFruit(actualFruit))
 		{
